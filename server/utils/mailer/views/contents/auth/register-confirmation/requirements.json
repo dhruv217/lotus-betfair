@@ -1,0 +1,8 @@
+{
+  "user": {
+    "name": "string, user name (optional)"
+  },
+  "links": {
+    "login": "string, login URL"
+  }
+}

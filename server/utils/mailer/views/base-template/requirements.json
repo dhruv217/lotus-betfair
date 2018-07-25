@@ -1,0 +1,21 @@
+{
+  "metas": {
+    "subject": "string, subject of the mail"
+  },
+  "user": {
+    "email": "string, user email address"
+  },
+  "company": {
+    "name": "string, name of company (automatically picked in /config/config.json)",
+    "phone": "string, phone number of company (with area code: `+00`) (automatically picked in /config/config.json)",
+    "address": "string, physical address of company (automatically picked in /config/config.json)",
+    "product": {
+      "name": "Product name (ie: Mailing App) (automatically picked in /config/config.json)"
+    }
+  },
+  "attachments": {
+    "logo": "base64 encoded image (automatically generated from `view/base-template/images/logo.png`)"
+  },
+  "css": "string, minified css (automatically generated from `view/base-template/index.css`)",
+  "content": "string, minified html content (automatically generated from `contents/{selected-template-name}/index.html`)"
+}

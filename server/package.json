@@ -1,0 +1,27 @@
+{
+  "name": "lotus-backend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.18.3",
+    "clean-css": "^4.1.11",
+    "cookie-parser": "~1.4.3",
+    "debug": "^3.1.0",
+    "ejs": "~2.6.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.5",
+    "mongoose-unique-validator": "^2.0.1",
+    "morgan": "^1.9.0",
+    "mustache": "^2.3.0",
+    "nodemailer": "^4.0.1",
+    "nodemon": "^1.18.3",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "serve-favicon": "~2.5.0"
+  }
+}

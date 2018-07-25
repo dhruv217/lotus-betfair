@@ -1,0 +1,64 @@
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="600" class="container">
+  <tr>
+    <td width="100%" colspan="3" align="center" style="padding-bottom:10px;padding-top:25px;">
+      <div class="contentEditableContainer contentTextEditable">
+        <div class="contentEditable" align='center'>
+          <h2>Password Reset</h2>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td width="100">&nbsp;</td>
+    <td width="400" align="center">
+      <div class="contentEditableContainer contentTextEditable">
+        <div class="contentEditable" align='left'>
+          
+          {{#user.name}}
+            <p>Hi {{ user.name }},</p>
+          {{/user.name}}
+          {{^user.name}}
+            <p>Hi,</p>
+          {{/user.name}}
+          
+            <p>You recently requested to reset your password for your "{{ company.name }} {{ company.product.name }}" account.</p>
+            <p>Use the button below to reset it.</p>
+            <p></p>
+        </div>
+      </div>
+    </td>
+    <td width="100">&nbsp;</td>
+  </tr>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="600" class="container">
+  <tr>
+    <td width="200">&nbsp;</td>
+    <td width="200" align="center" style="padding-top:25px;">
+      <table cellpadding="0" cellspacing="0" border="0" align="center" width="200" height="50">
+        <tr>
+          <td bgcolor="#ED006F" align="center" style="border-radius:4px;" width="200" height="50">
+            <div class="contentEditableContainer contentTextEditable">
+              <div class="contentEditable" align='center'>
+                <a target='_blank' href="{{ links.resetPassword }}" class='link2'>Click here to reset it</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="200">&nbsp;</td>
+  </tr>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="600" class="container">
+  <tr>
+    <td width="100">&nbsp;</td>
+    <td width="400" align="center">
+      <div class="contentEditableContainer contentTextEditable">
+        <div class="contentEditable" align='left'>
+          <p>This password reset link is only valid for the next 24 hours. If you did not requested a password reset, just ignore this email.</p>
+        </div>
+      </div>
+    </td>
+    <td width="100">&nbsp;</td>
+  </tr>
+</table>
