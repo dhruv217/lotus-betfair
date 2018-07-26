@@ -1,14 +1,27 @@
-<h4 *ngIf="error">{{error}}</h4>
-<form (ngSubmit)="submit()">
-  <div class="form-group col-3">
-    <label for="username">Email</label>
-    <input type="text" name="username" class="form-control" [(ngModel)]="email" />
+
+<div class="-full-size login-view ">
+  <div class="login-form">
+    <div class="login-panel panel panel-default">
+      <div class="panel-heading">
+        <div class="logo"></div>
+      </div>
+      <div class="panel-body">
+        <h4 *ngIf="error">{{error}}</h4>
+        <form class="apl-form" name="loginForm" (ngSubmit)="submit()">
+          <fieldset>
+            <div class="form-group">
+              <input autocomplete="off" type="text" placeholder="Email" name="loginName" class="apl-form-large form-control login-field input-username"
+                autofocus=""  [(ngModel)]="email">
+            </div>
+            <div class="form-group">
+              <input autocomplete="off" class="apl-form-large form-control input-password" placeholder="Password"
+                name="password" type="password"  [(ngModel)]="password">
+            </div>
+            <button name="login" class="apl-btn apl-btn-secondary apl-btn-large btn-login" type="submit">Login</button>
+          </fieldset>
+        </form>
+        <!-- ngRepeat: errMsg in errorList -->
+      </div>
+    </div>
   </div>
-  <div class="form-group col-3">
-    <label for="password">Password</label>
-    <input type="password" name="password" class="form-control" [(ngModel)]="password" />
-  </div>
-  <div class="form-group col-3">
-    <button class="btn btn-primary" type="submit">Login</button>
-  </div>
-</form>
+</div>

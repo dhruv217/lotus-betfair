@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatchComponent } from './match/match.component';
 
 
 export function tokenGetter() {
@@ -18,7 +19,7 @@ export function tokenGetter() {
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DashboardComponent],
+  declarations: [AppComponent, LoginComponent, DashboardComponent, MatchComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

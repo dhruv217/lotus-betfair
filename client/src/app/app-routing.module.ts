@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   // otherwise redirect to home
-  { path: '**', redirectTo: 'todos' }
+  { path: '**', redirectTo: 'dashboard' }
 ];
 
 @NgModule({

@@ -1,3 +1,564 @@
-<p>
-  dashboard works!
-</p>
+<div class="body">
+  <header class="header">
+    <div class="boxed-layout-wrapper">
+      <div class="logo-area">
+        <div class="logo" ng-click="homepage()"></div>
+      </div>
+
+      <div class="clock">
+        <time timestamp="timestamp" type="simpleDate" class="">Jul 26, 2018</time>
+        <time timestamp="timestamp" type="time" class="time ">02:43:46</time>
+        <div class="clock-timezone-settings">
+          (
+          <div class="wrap-dd-menu" ng-class="{'disabled': dropdownDisabled}">
+            <a href="" dropdown-menu="timezones" dropdown-model="selectedZone" dropdown-onchange="changeTimezone(selected)"
+              analytics-on="" analytics-category="Navigation" analytics-event="Timezone" analytics-label="M" class="ng-isolate-scope">
+              <span class="">+05:30
+                <i class="apl-icon-angle-down"></i>
+              </span>
+            </a>
+            <ul class="dropdown">
+              <!-- ngRepeat: item in dropdownMenu -->
+              <li ng-class="{divider: dropdownMenuItem.divider, 'divider-label': dropdownMenuItem.divider &amp;&amp; dropdownMenuItem[dropdownItemLabel]}"
+                ng-repeat="item in dropdownMenu" class="dropdown-item" dropdown-item-label="labelField" dropdown-menu-item="item">
+                <!-- ngIf: !dropdownMenuItem.divider -->
+                <a class="dropdown-item " ng-if="!dropdownMenuItem.divider" ng-href="" ng-click="selectItem()">System time - (GMT +00:00)</a>
+                <!-- end ngIf: !dropdownMenuItem.divider -->
+                <!-- ngIf: dropdownMenuItem.divider -->
+              </li>
+              <!-- end ngRepeat: item in dropdownMenu -->
+              <li ng-class="{divider: dropdownMenuItem.divider, 'divider-label': dropdownMenuItem.divider &amp;&amp; dropdownMenuItem[dropdownItemLabel]}"
+                ng-repeat="item in dropdownMenu" class="dropdown-item" dropdown-item-label="labelField" dropdown-menu-item="item">
+                <!-- ngIf: !dropdownMenuItem.divider -->
+                <a class="dropdown-item " ng-if="!dropdownMenuItem.divider" ng-href="" ng-click="selectItem()">Your computer time - (GMT +05:30)</a>
+                <!-- end ngIf: !dropdownMenuItem.divider -->
+                <!-- ngIf: dropdownMenuItem.divider -->
+              </li>
+              <!-- end ngRepeat: item in dropdownMenu -->
+              <li ng-class="{divider: dropdownMenuItem.divider, 'divider-label': dropdownMenuItem.divider &amp;&amp; dropdownMenuItem[dropdownItemLabel]}"
+                ng-repeat="item in dropdownMenu" class="dropdown-item" dropdown-item-label="labelField" dropdown-menu-item="item">
+                <!-- ngIf: !dropdownMenuItem.divider -->
+                <a class="dropdown-item " ng-if="!dropdownMenuItem.divider" ng-href="" ng-click="selectItem()">India Standard time - (GMT +05:30)</a>
+                <!-- end ngIf: !dropdownMenuItem.divider -->
+                <!-- ngIf: dropdownMenuItem.divider -->
+              </li>
+              <!-- end ngRepeat: item in dropdownMenu -->
+            </ul>
+          </div>
+          )
+        </div>
+      </div>
+
+      <div class="infobar">
+        <ul class="linkbar">
+          <li class="search-container">
+            <div class="apl-form search">
+              <div class="placeholder-wrapper animatable" ng-class="{'activated': isActive, 'animatable': isAnimatable}">
+                <div class="placeholder ">Search Events</div>
+                <div ng-transclude="">
+                  <div class="apl-form-icon">
+                    <i class="apl-icon-search" aria-hidden="true"></i>
+
+                    <input type="text" class="apl-form-large -qa-search-bar   ng-empty" apl-placeholder="Search Events"
+                      [(ngModel)]="searchText.name" ng-keyup="keyup($event)" ng-blur="isSearchChild($event)" analytics-on="focus"
+                      analytics-category="'Header'" analytics-event="'Click'" analytics-label="'Search Bar'">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <ul *ngIf="searchText.name.length > 2" class="-qa-search-results ng-hide">
+              <!-- ngIf: searchResult.length === 0 -->
+              <li ng-if="searchResult.length === 0" class="-qa-item-name search-link">
+                <p class="">No events found matching ''</p>
+              </li>
+              <!-- end ngIf: searchResult.length === 0 -->
+
+              <!-- ngRepeat: item in searchResult -->
+            </ul>
+          </li>
+          <li>
+            <p class="">Logged in as demoab1234</p>
+            <p class="last-login ">Last logged in:
+              <time timestamp="userData.user.lastLoginTime" type="dateSimpleTime" class="">26/07/2018 02:39</time>
+            </p>
+          </li>
+          <li class="-qa-setting-dropdown">
+            <div class="wrap-dd-menu" ng-class="{'disabled': dropdownDisabled}">
+              <a href="" analytics-on="" analytics-event="Open Dropdown" analytics-category="Account" dropdown-menu="ddMenuOptions"
+                dropdown-model="ddMenuSelected" class="ng-isolate-scope">
+                <i class="apl-icon-cog header-link"></i>
+                <span translate="" class="">Account</span>
+              </a>
+              <ul class="dropdown">
+                <!-- ngRepeat: item in dropdownMenu -->
+                <li ng-class="{divider: dropdownMenuItem.divider, 'divider-label': dropdownMenuItem.divider &amp;&amp; dropdownMenuItem[dropdownItemLabel]}"
+                  ng-repeat="item in dropdownMenu" class="dropdown-item" dropdown-item-label="labelField"
+                  dropdown-menu-item="item">
+                  <!-- ngIf: !dropdownMenuItem.divider -->
+                  <a href="" class="dropdown-item " ng-if="!dropdownMenuItem.divider" ng-href=""
+                    ng-click="selectItem()">My Bets</a>
+                  <!-- end ngIf: !dropdownMenuItem.divider -->
+                  <!-- ngIf: dropdownMenuItem.divider -->
+                </li>
+                <!-- end ngRepeat: item in dropdownMenu -->
+                <li ng-class="{divider: dropdownMenuItem.divider, 'divider-label': dropdownMenuItem.divider &amp;&amp; dropdownMenuItem[dropdownItemLabel]}"
+                  ng-repeat="item in dropdownMenu" class="dropdown-item" dropdown-item-label="labelField"
+                  dropdown-menu-item="item">
+                  <!-- ngIf: !dropdownMenuItem.divider -->
+                  <a href="" class="dropdown-item " ng-if="!dropdownMenuItem.divider" ng-href=""
+                    ng-click="selectItem()">Betting Profit and Loss</a>
+                  <!-- end ngIf: !dropdownMenuItem.divider -->
+                  <!-- ngIf: dropdownMenuItem.divider -->
+                </li>
+                <!-- end ngRepeat: item in dropdownMenu -->
+                <li ng-class="{divider: dropdownMenuItem.divider, 'divider-label': dropdownMenuItem.divider &amp;&amp; dropdownMenuItem[dropdownItemLabel]}"
+                  ng-repeat="item in dropdownMenu" class="dropdown-item" dropdown-item-label="labelField"
+                  dropdown-menu-item="item">
+                  <!-- ngIf: !dropdownMenuItem.divider -->
+                  <a href="" class="dropdown-item " ng-if="!dropdownMenuItem.divider"
+                    ng-href="" ng-click="selectItem()">Account Statement</a>
+                  <!-- end ngIf: !dropdownMenuItem.divider -->
+                  <!-- ngIf: dropdownMenuItem.divider -->
+                </li>
+                <!-- end ngRepeat: item in dropdownMenu -->
+                <li ng-class="{divider: dropdownMenuItem.divider, 'divider-label': dropdownMenuItem.divider &amp;&amp; dropdownMenuItem[dropdownItemLabel]}"
+                  ng-repeat="item in dropdownMenu" class="dropdown-item" dropdown-item-label="labelField"
+                  dropdown-menu-item="item">
+                  <!-- ngIf: !dropdownMenuItem.divider -->
+                  <a href="" class="dropdown-item " ng-if="!dropdownMenuItem.divider"
+                    ng-href="" ng-click="selectItem()">Transfer Statement</a>
+                  <!-- end ngIf: !dropdownMenuItem.divider -->
+                  <!-- ngIf: dropdownMenuItem.divider -->
+                </li>
+                <!-- end ngRepeat: item in dropdownMenu -->
+                <li ng-class="{divider: dropdownMenuItem.divider, 'divider-label': dropdownMenuItem.divider &amp;&amp; dropdownMenuItem[dropdownItemLabel]}"
+                  ng-repeat="item in dropdownMenu" class="dropdown-item" dropdown-item-label="labelField"
+                  dropdown-menu-item="item">
+                  <!-- ngIf: !dropdownMenuItem.divider -->
+                  <a href="" class="dropdown-item " ng-if="!dropdownMenuItem.divider" ng-href=""
+                    ng-click="selectItem()">Change Password</a>
+                  <!-- end ngIf: !dropdownMenuItem.divider -->
+                  <!-- ngIf: dropdownMenuItem.divider -->
+                </li>
+                <!-- end ngRepeat: item in dropdownMenu -->
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="" class="qa-logout" (click)="logout()">
+              <i class="apl-icon-signout header-link"></i>
+              <span translate="" class="">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <div class="content boxed-layout-wrapper" ng-class="{'with-notifications': notificationsVisible}">
+    <div class="left-pane">
+      <aside class="menu">
+        <nav class="tree-menu">
+          <div class="left-menu-inner  current-lvl-0">
+
+            <ul class="menu-column menu-prev menu-lvl- sport-type-">
+              <li>
+                <a href="" class="favourites-link">
+                  <i class="favourites-icon apl-icon-star-o"></i>
+                  <span class="link-name" translate="">Favourites</span>
+                </a>
+              </li>
+              <li>
+                <a href="" class="home-link">
+                  <i class="favourites-icon apl-icon-home"></i>
+                  <span class="link-name" translate="">Sports</span>
+                </a>
+              </li>
+              <!-- ngIf: menuLvlPrev.parent -->
+              <!-- ngIf: menuLvlPrev.parent -->
+              <!-- ngRepeat: node in menuLvlPrev.children -->
+            </ul>
+
+            <ul class="menu-column sport-type- menu-lvl-0">
+              <li>
+                <a href="" class="favourites-link">
+                  <i class="favourites-icon apl-icon-star-o"></i>
+                  <span class="link-name" translate="">Favourites</span>
+                </a>
+              </li>
+              <li>
+                <a href="" class="home-link">
+                  <i class="favourites-icon apl-icon-home"></i>
+                  <span class="link-name" translate="">Sports</span>
+                </a>
+              </li>
+              <!-- ngIf: menuLvlCurrent.parent -->
+              <!-- ngIf: menuLvlCurrent.parent -->
+              <!-- ngRepeat: node in menuLvlCurrent.children -->
+              <li ng-repeat="node in menuLvlCurrent.children" class="">
+                <a class="menu-link sport-type-Cricket" ng-class="{ selected: node.type === 'RACE' &amp;&amp; selectedMenuId === node.id }"
+                  ng-href="" href="">
+
+                  <i class="sport-icon apl-icon-sport-cricket"></i>
+                  <!-- ngIf: node.type !== 'RACE' -->
+                  <span ng-if="node.type !== 'RACE'" class="link-name ">Cricket</span>
+                  <!-- end ngIf: node.type !== 'RACE' -->
+                  <!-- ngIf: node.type === 'RACE' -->
+                  <i class="indicator-icon apl-icon-chevron-right"></i>
+                </a>
+              </li>
+              <!-- end ngRepeat: node in menuLvlCurrent.children -->
+              <li ng-repeat="node in menuLvlCurrent.children" class="">
+                <a class="menu-link sport-type-Football" ng-class="{ selected: node.type === 'RACE' &amp;&amp; selectedMenuId === node.id }"
+                  ng-href="" href="">
+
+                  <i class="sport-icon apl-icon-sport-football"></i>
+                  <!-- ngIf: node.type !== 'RACE' -->
+                  <span ng-if="node.type !== 'RACE'" class="link-name ">Football</span>
+                  <!-- end ngIf: node.type !== 'RACE' -->
+                  <!-- ngIf: node.type === 'RACE' -->
+                  <i class="indicator-icon apl-icon-chevron-right"></i>
+                </a>
+              </li>
+              <!-- end ngRepeat: node in menuLvlCurrent.children -->
+              <li ng-repeat="node in menuLvlCurrent.children" class="">
+                <a class="menu-link sport-type-Tennis" ng-class="{ selected: node.type === 'RACE' &amp;&amp; selectedMenuId === node.id }"
+                  ng-href="" href="">
+
+                  <i class="sport-icon apl-icon-sport-tennis"></i>
+                  <!-- ngIf: node.type !== 'RACE' -->
+                  <span ng-if="node.type !== 'RACE'" class="link-name ">Tennis</span>
+                  <!-- end ngIf: node.type !== 'RACE' -->
+                  <!-- ngIf: node.type === 'RACE' -->
+                  <i class="indicator-icon apl-icon-chevron-right"></i>
+                </a>
+              </li>
+              <!-- end ngRepeat: node in menuLvlCurrent.children -->
+              <li ng-repeat="node in menuLvlCurrent.children" class="">
+                <a class="menu-link sport-type-Horse-Racing" ng-class="{ selected: node.type === 'RACE' &amp;&amp; selectedMenuId === node.id }"
+                  ng-href="" href="">
+
+                  <i class="sport-icon apl-icon-sport-horseracing"></i>
+                  <!-- ngIf: node.type !== 'RACE' -->
+                  <span ng-if="node.type !== 'RACE'" class="link-name ">Horse Racing</span>
+                  <!-- end ngIf: node.type !== 'RACE' -->
+                  <!-- ngIf: node.type === 'RACE' -->
+                  <i class="indicator-icon apl-icon-chevron-right"></i>
+                </a>
+              </li>
+              <!-- end ngRepeat: node in menuLvlCurrent.children -->
+              <li ng-repeat="node in menuLvlCurrent.children" class="">
+                <a class="menu-link sport-type-Greyhound-Racing" ng-class="{ selected: node.type === 'RACE' &amp;&amp; selectedMenuId === node.id }"
+                  ng-href="" href="">
+
+                  <i class="sport-icon apl-icon-sport-greyhoundracing"></i>
+                  <!-- ngIf: node.type !== 'RACE' -->
+                  <span ng-if="node.type !== 'RACE'" class="link-name ">Greyhound Racing</span>
+                  <!-- end ngIf: node.type !== 'RACE' -->
+                  <!-- ngIf: node.type === 'RACE' -->
+                  <i class="indicator-icon apl-icon-chevron-right"></i>
+                </a>
+              </li>
+              <!-- end ngRepeat: node in menuLvlCurrent.children -->
+            </ul>
+
+            <ul class="menu-column menu-next menu-lvl- sport-type-">
+              <li>
+                <a href="" class="favourites-link">
+                  <i class="favourites-icon apl-icon-star-o"></i>
+                  <span class="link-name" translate="">Favourites</span>
+                </a>
+              </li>
+              <li>
+                <a href="" class="home-link">
+                  <i class="favourites-icon apl-icon-home"></i>
+                  <span class="link-name" translate="">Sports</span>
+                </a>
+              </li>
+              <!-- ngIf: menuLvlNext.parent -->
+              <!-- ngIf: menuLvlNext.parent -->
+              <!-- ngRepeat: node in menuLvlNext.children -->
+            </ul>
+          </div>
+        </nav>
+      </aside>
+    </div>
+    <div class="mid-pane">
+        <div data-ng-controller="SportWrapperController as vm" class="sport-wrapper">
+
+          <!-- ngIf: !vm.showMarkets && !vm.isRaceLanding && !vm.isRace -->
+          <div class="events" ng-if="!vm.showMarkets &amp;&amp; !vm.isRaceLanding &amp;&amp; !vm.isRace"
+            event-id="vm.eventId" event-type="vm.eventType" api-function="vm.apiFunction">
+            <!-- ngIf: selectedMenu !== null -->
+            <h1 ng-if="selectedMenu !== null" class="">Cricket
+              <!-- ngIf: globalStartsInLabel -->
+              <span class="starts-in-label " ng-if="globalStartsInLabel">Betting from 30mins before start</span>
+              <!-- end ngIf: globalStartsInLabel -->
+            </h1>
+            <!-- end ngIf: selectedMenu !== null -->
+
+            <div class="events-rows" is-events="true" events="events" selections="selections" show-draw-column="showDrawColumn">
+              <!-- ngIf: events && events.length > 0 -->
+              <table class="market-listing-table apl-table -qa-odds-test" ng-if="events &amp;&amp; events.length > 0">
+                <thead>
+                  <tr>
+                    <th class="title ">Match</th>
+                    <th class="col-first-player _align-center" colspan="2">1</th>
+                    <!-- ngIf: showDrawColumn -->
+                    <th class="player-draw _align-center" ng-if="showDrawColumn" colspan="2">X</th>
+                    <!-- end ngIf: showDrawColumn -->
+                    <th class="col-second-player _align-center" colspan="2">2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- ngRepeat: event in events track by event.id -->
+                  <tr *ngFor="let event of polledCricketEvents$ | async; trackBy: trackByEventID">
+                    <td>
+                      <i class="-qa-add-to-fav apl-icon-star-o"
+                        ng-click="toggleFavourite(event)" ng-class="selectedFavourites[event.id] ? 'apl-icon-star starred' : 'apl-icon-star-o'"></i>
+
+                      <a class="event-name " ng-href="" href="">{{ event.event.name }}</a>
+                      <small class="in-play-content " *ngIf="event.inPlay">
+                        <i class="apl-icon-custom-play"></i> In-Play
+                      </small>
+                      <small *ngIf="!event.inPlay" class="">
+                        <time timestamp="event.start" type="gmtDateTime" class="">{{ event.event.openDate | date:'dd/MM/yyyy hh:mm' }}</time>
+                      </small>
+                    </td>
+                    <td ng-click="placeBet()" ng-class="{ 'unhighlighted': unhighlighted, 'empty-price': emptyPrice, 'show-size': showSize, 'betting-disabled': !bettingEnabled }"
+                      class="back" apl-price-volume="" event="event" side="back" *ngIf="event.status == 'OPEN'">
+                      <strong class="odds ">
+                        {{ event.runners[0]?.back[0]['price'] | number:'1.2-3' }}
+                      </strong>
+                      <div class="size">
+                        <span class="">
+                          {{ event.runners[0]?.back[0]['size'] | number:'1.2-3' }}
+                        </span>
+                      </div>
+                    </td>
+                    <td ng-click="placeBet()" ng-class="{ 'unhighlighted': unhighlighted, 'empty-price': emptyPrice, 'show-size': showSize, 'betting-disabled': !bettingEnabled }"
+                      class="lay" apl-price-volume="" selection="selections[event.id][0]" event="event" side="lay" *ngIf="event.status == 'OPEN'">
+                      <strong class="odds ">
+                         {{ event.runners[0]?.lay[0]['price'] | number:'1.2-3' }}
+                      </strong>
+                      <div class="size">
+                        <span class="">
+                           {{ event.runners[0]?.lay[0]['size'] | number:'1.2-3' }}
+                        </span>
+                      </div>
+                    </td>
+                    <td ng-click="placeBet()" ng-class="{ 'unhighlighted': unhighlighted, 'empty-price': emptyPrice, 'show-size': showSize, 'betting-disabled': !bettingEnabled }"
+                      class="empty" apl-price-volume="" selection="selections[event.id][2]" event="event" side="empty" *ngIf="event.status == 'OPEN'">
+                      <strong class="odds ">
+                        {{ event.runners[2]?.back[0]['price'] | number:'1.2-3' }}
+                      </strong>
+                      <div class="size">
+                        <span class="">
+                           {{ event.runners[2]?.back[0]['size'] | number:'1.2-3' }}
+                        </span>
+                      </div>
+                    </td>
+                    <td ng-click="placeBet()" ng-class="{ 'unhighlighted': unhighlighted, 'empty-price': emptyPrice, 'show-size': showSize, 'betting-disabled': !bettingEnabled }"
+                      class="empty" apl-price-volume="" selection="selections[event.id][2]" event="event" side="empty" *ngIf="event.status == 'OPEN'">
+                      <strong class="odds ">
+                         {{ event.runners[2]?.lay[0]['price'] | number:'1.2-3' }}
+                      </strong>
+                      <div class="size">
+                        <span class="">
+                           {{ event.runners[2]?.lay[0]['size'] | number:'1.2-3' }}
+                        </span>
+                      </div>
+                    </td>
+                    <td analytics-on="" analytics-event="Add Bet" analytics-category="Bet Slip" analytics-label="Back" ng-click="placeBet()"
+                      ng-class="{ 'unhighlighted': unhighlighted, 'empty-price': emptyPrice, 'show-size': showSize, 'betting-disabled': !bettingEnabled }"
+                      class="back" apl-price-volume="" selection="selections[event.id][1]" event="event" side="back" *ngIf="event.status == 'OPEN'">
+                      <strong class="odds ">
+                         {{ event.runners[1]?.back[0]['price'] | number:'1.2-3' }}
+                      </strong>
+                      <div class="size">
+                        <span class="">
+                           {{ event.runners[1]?.back[0]['size'] | number:'1.2-3' }}
+                        </span>
+                      </div>
+                    </td>
+                    <td analytics-on="" analytics-event="Add Bet" analytics-category="Bet Slip" analytics-label="Lay" ng-click="placeBet()" ng-class="{ 'unhighlighted': unhighlighted, 'empty-price': emptyPrice, 'show-size': showSize, 'betting-disabled': !bettingEnabled }"
+                      class="lay" apl-price-volume="" selection="selections[event.id][1]" event="event" side="lay" *ngIf="event.status == 'OPEN'">
+                      <strong class="odds ">
+                        {{ event.runners[1]?.lay[0]['price'] | number:'1.2-3' }}
+                      </strong>
+                      <div class="size">
+                        <span class="">
+                           {{ event.runners[1]?.lay[0]['size'] | number:'1.2-3' }}
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- end ngIf: events && events.length > 0 -->
+            </div>
+          </div>
+          <!-- end ngIf: !vm.showMarkets && !vm.isRaceLanding && !vm.isRace -->
+
+          <!-- ngIf: vm.showMarkets && !vm.isRaceLanding -->
+
+          <!-- ngIf: vm.isRaceLanding || vm.isRace -->
+
+          <!-- ngIf: isBfDown || vm.isMenuEmpty -->
+
+        </div>
+    </div>
+    <!-- ngIf: !showBetManager -->
+    <!-- ngIf: showBetManager -->
+    <div class="right-pane" ng-if="showBetManager">
+      <div class="account-overview">
+        <ul class="list-wrap" ng-class="overviewClass">
+          <li class="">
+            <strong class="">Credit Limit:</strong>
+            0.00
+          </li>
+          <li>
+            <strong class="">Winnings:</strong>
+            <span ng-class="{'-negative': accountInfo.totalBalance < 0, '-positive': accountInfo.totalBalance > 0}" class="">0.00</span>
+          </li>
+          <li>
+            <strong class="">Total Net Exposure:</strong>
+            <span ng-class="{'-negative': accountInfo.deductedExposure !== 0}" class="">0.00</span>
+          </li>
+        </ul>
+      </div>
+      <div class="inner-right-pane-placeholder"></div>
+      <div class="inner-right-pane">
+        <div class="user-settings">
+          <div class="one-click-bet-settings-wrapper">
+
+            <div class="one-click-bet-settings _clearfix one-click-disabled select-mode-on" ng-class="{'one-click-active' : oneClickSettings.active === 'true', 'one-click-disabled' : oneClickSettings.active !== 'true', 'edit-mode-on' : editMode === true, 'select-mode-on' : editMode !== true}">
+
+              <div analytics-on="" analytics-event="Toggle" analytics-category="One Click" analytics-label="Off" class="small one-click-switch"
+                ng-click="toggleActive()" settings="oneClickSettings">
+
+                <div class="toggle-bg toggle-alternate off">
+
+                  <label class="off">off</label>
+                  <input type="radio" name="toggle" value="false" ng-Model="settings.active" class="">
+                  <input type="radio" name="toggle" value="true" ng-Model="settings.active" class="">
+                  <span class="switch off"></span>
+
+                </div>
+
+                <!-- <p><strong>State</strong>: {{switch}}</p>-->
+
+              </div>
+              <button ng-click="cancelEditingSettings();" class="apl-btn-link btn-cancel-editing" translate="">Cancel</button>
+              <div class="one-click-settings-animation-wrap">
+                <strong class="one-click-title" translate="">1 Click Betting</strong>
+                <div class="apl-form one-click-bet-form">
+                  <div class="select-mode-fields">
+                    <ul class="settings-list">
+                      <!-- ngRepeat: setting in oneClickSettings.settings track by $index -->
+                      <li ng-repeat="setting in oneClickSettings.settings track by $index" class="setting-select-only">
+                        <button ng-click="selectSetting($index);" type="button" class="apl-btn apl-btn-small apl-btn-default  selected"
+                          ng-class="{'selected' : oneClickSettings.selected == $index}">
+                          50
+                        </button>
+                      </li>
+                      <!-- end ngRepeat: setting in oneClickSettings.settings track by $index -->
+                      <li ng-repeat="setting in oneClickSettings.settings track by $index" class="setting-select-only">
+                        <button ng-click="selectSetting($index);" type="button" class="apl-btn apl-btn-small apl-btn-default " ng-class="{'selected' : oneClickSettings.selected == $index}">
+                          100
+                        </button>
+                      </li>
+                      <!-- end ngRepeat: setting in oneClickSettings.settings track by $index -->
+                      <li ng-repeat="setting in oneClickSettings.settings track by $index" class="setting-select-only">
+                        <button ng-click="selectSetting($index);" type="button" class="apl-btn apl-btn-small apl-btn-default " ng-class="{'selected' : oneClickSettings.selected == $index}">
+                          200
+                        </button>
+                      </li>
+                      <!-- end ngRepeat: setting in oneClickSettings.settings track by $index -->
+                    </ul>
+                    <button analytics-on="" analytics-event="Edit" analytics-category="One Click" analytics-label="Settings" ng-click="openEditMode()"
+                      class="apl-btn apl-btn-primary apl-btn-small btn-one-click-edit _pull-right" translate="">Edit</button>
+                  </div>
+                  <div class="edit-mode-fields">
+                    <form class="apl-form -apl-valid-credit" name="oneClickSettingsForm">
+                      <ul class="settings-list">
+                        <!-- ngRepeat: setting in oneClickSettingsTemp track by $index -->
+                        <li ng-repeat="setting in oneClickSettingsTemp track by $index" class="setting-input-wrap">
+                          <input class="apl-input apl-form-small setting-input  "
+                            min="0" step="1" apl-valid-credit="" input-restrict="{type: 'num', allowNegative: false}" type="number"
+                            ng-Model="oneClickSettingsTemp[$index]">
+                        </li>
+                        <!-- end ngRepeat: setting in oneClickSettingsTemp track by $index -->
+                        <li ng-repeat="setting in oneClickSettingsTemp track by $index" class="setting-input-wrap">
+                          <input class="apl-input apl-form-small setting-input "
+                            min="0" step="1" apl-valid-credit="" input-restrict="{type: 'num', allowNegative: false}" type="number"
+                            ng-Model="oneClickSettingsTemp[$index]">
+                        </li>
+                        <!-- end ngRepeat: setting in oneClickSettingsTemp track by $index -->
+                        <li ng-repeat="setting in oneClickSettingsTemp track by $index" class="setting-input-wrap">
+                          <input class="apl-input apl-form-small setting-input  -min -apl-valid-credit"
+                            min="0" step="1" apl-valid-credit="" input-restrict="{type: 'num', allowNegative: false}" type="number"
+                            ng-Model="oneClickSettingsTemp[$index]">
+                        </li>
+                        <!-- end ngRepeat: setting in oneClickSettingsTemp track by $index -->
+                      </ul>
+                      <button analytics-on="" analytics-event="Save" analytics-category="One Click" analytics-label="Settings" ng-disabled="oneClickSettingsForm.$invalid"
+                        ng-click="saveSettings();" class="apl-btn apl-btn-primary apl-btn-small btn-one-click-save _pull-right"
+                        translate="">Save</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bet-manager">
+          <h4 class="">Betslip</h4>
+
+          <ul class="tabs">
+            <li ng-class="activeTab === 'betslip' ? '-active' : ''" class="tab-bet-slip -active">
+              <a analytics-on="" analytics-event="Tab Selected" analytics-category="Bet Manager" analytics-label="Bet Slip" href="" ng-click="switchTab('betslip')"
+                class="-qa-bet-mgr-betslip ">Betslip</a>
+            </li>
+            <li ng-class="activeTab === 'open-bets' ? '-active' : ''" class="tab-open-bets">
+              <a analytics-on="" analytics-event="Tab Selected" analytics-category="Bet Manager" analytics-label="Open Bets" href="" ng-click="switchTab('open-bets')"
+                class="-qa-bet-mgr-unmatched ">Open Bets</a>
+            </li>
+            <li>
+              <button class="apl-btn  apl-btn-primary" ng-class="{'apl-btn-primary' : !isStakesEditing}" ng-click="editStakes()"
+                analytics-on="" analytics-event="Edit" analytics-category="Stakes" analytics-label="Settings">Edit Stakes</button>
+            </li>
+          </ul>
+          <!-- ngIf: activeTab == 'open-bets' -->
+          <ul class="content">
+            <!-- ngIf: isStakesEditing -->
+            <li id="tab-betslip" class="tab-betslip" ng-show="activeTab === 'betslip'" style="height: 676px;">
+              <div class="bets betslip has-empty-message" ng-class="!isActive ? 'has-empty-message' : 'has-bets'">
+                <!-- ngIf: isSubmitted -->
+                <div ng-switch="isActive">
+                  <!-- ngSwitchWhen: false -->
+                  <p class="empty-list-info" ng-switch-when="false">Click on the odds to add selections to the betslip.</p>
+                  <!-- end ngSwitchWhen: -->
+                  <!-- ngSwitchDefault: -->
+                </div>
+              </div>
+            </li>
+            <!-- ngIf: activeTab === 'open-bets' -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- end ngIf: showBetManager -->
+  </div>
+
+  <footer class="footer ">
+    <a href="" ng-click="navigate()" ng-transclude="" url="pages/rnr.html" class="ng-isolate-scope">
+      <span ng-bind-html="'RULES_TITLE' | translate" class="">Rules &amp; Regulations</span>
+    </a>
+    © 2016-2018
+    <div class="powered-by">
+      |
+      <span class="powered-logo"></span>
+    </div>
+  </footer>
+</div>
